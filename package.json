@@ -1,0 +1,43 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "DailyTrends Backend",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "prettier:check": "prettier *.js",
+    "eslint:check": "eslint --quiet *.js",
+    "prettier:fix": "prettier --write *.js",
+    "eslint:fix": "eslint --quiet --fix *.js",
+    "fix": "npm run prettier:fix && npm run eslint:fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fjpalacios/dailytrends-back.git"
+  },
+  "author": "Javi Palacios <javi@fjp.es>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/fjpalacios/dailytrends-back/issues"
+  },
+  "homepage": "https://github.com/fjpalacios/dailytrends-back#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-json": "^1.4.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2"
+  }
+}

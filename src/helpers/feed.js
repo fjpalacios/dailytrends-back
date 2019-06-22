@@ -18,6 +18,6 @@ exports.getConnection = async function(url) {
     args: ['--disable-dev-shm-usage', '--no-sandbox'],
   });
   const page = await browser.newPage();
-  await page.goto(url);
+  await page.goto(url, { timeout: 300000 });
   return page;
 };

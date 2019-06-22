@@ -28,6 +28,7 @@ async function getFeed(url) {
     };
     return feed;
   });
+  await page.close();
   return result;
 }
 

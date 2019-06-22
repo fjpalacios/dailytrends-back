@@ -2,19 +2,24 @@ const FeedSchema = require('../db/feed');
 
 class FeedModel {
   create(feed) {
-    let newFeed = FeedSchema(feed);
-    FeedSchema.find({ title: feed.title }).then(data => {
-      if (data.length === 0) newFeed.save();
-    });
+    return new FeedSchema(feed).save();
   }
 
-  getAll() {}
+  getAll() {
+    return FeedSchema.find().sort({ _id: -1 });
+  }
 
-  getOne(id) {}
+  getOne(id) {
+    return FeedSchema.findById(id);
+  }
 
-  update(id, feed) {}
+  update(id, feed) {
+    return FeedSchema.findByIdAndUpdate(id, feed);
+  }
 
-  delete(id) {}
+  delete(id) {
+    return FeedSchema.findByIdAndDelete(id);
+  }
 }
 
 module.exports = FeedModel;

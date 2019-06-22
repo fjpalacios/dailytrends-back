@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const feed = new Schema({
-  title: { type: String, required: true },
+  title: { type: String, required: true, unique: true },
   body: { type: String, required: true },
   image: String,
   source: { type: String, required: true },

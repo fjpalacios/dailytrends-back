@@ -15,5 +15,6 @@ RUN apk update && apk upgrade && \
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 RUN npm install
 COPY --chown=node:node src ./src
+COPY --chown=node:node test ./test
 RUN chmod +x ./wait-for
 USER node

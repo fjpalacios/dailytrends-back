@@ -22,7 +22,7 @@ class FeedController {
         if (feeds.length === 0) {
           return res.status(404).send({ message: 'No feeds found' });
         }
-        return res.status(200).send(feeds);
+        return res.status(200).send({ feeds });
       })
       .catch(() => {
         return res.status(500).send({ message: 'Request error' });
@@ -37,7 +37,7 @@ class FeedController {
         if (feed.length === 0) {
           return res.status(404).send({ message: 'No feed found' });
         }
-        return res.status(200).send(feed);
+        return res.status(200).send({ feed });
       })
       .catch(() => {
         return res.status(500).send({ message: 'Request error' });

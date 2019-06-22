@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  backendtest:
+    container_name: dt-back-test
+    image: dt-backend:latest
+    env_file:
+      - .env
+    volumes:
+      - "./test:/usr/src/app/test"
+      - "./src:/usr/src/app/src"
+    depends_on:
+      - dbtest
+    command: sh -c "./wait-for dbtest:27017 -- npm run test"
+  dbtest:
+    container_name: dt-db-test
+    image: mongo:4.0
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: $TEST_DB_USERNAME
+      MONGO_INITDB_ROOT_PASSWORD: $TEST_DB_PASSWORD

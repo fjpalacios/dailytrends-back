@@ -1,4 +1,4 @@
-.PHONY: build run destroy restart logs help
+.PHONY: build run destroy restart logs test help
 .DEFAULT_GOAL := help
 default: help
 
@@ -17,6 +17,10 @@ restart: ## Restart development environment
 
 logs: ## Get development logs
 	@docker-compose logs -f --tail=20
+
+##@ Testing
+test: ## run test suite
+	@docker-compose -f docker-compose-test.yml up --build --exit-code-from backendtest
 
 ##@ Help
 help: ## Available commands

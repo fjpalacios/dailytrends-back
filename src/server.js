@@ -1,3 +1,4 @@
+const environment = process.env.NODE_ENV || 'development';
 require('dotenv').config();
 
 const express = require('express');
@@ -7,6 +8,7 @@ const mongoose = require('mongoose');
 const elPaisScraping = require('./helpers/elpais.scraping');
 const elMundoScraping = require('./helpers/elmundo.scraping');
 const cron = require('node-cron');
+const db = require('./db')[environment];
 
 const app = express();
 
@@ -31,12 +33,14 @@ cron.schedule('*/30 * * * *', () => {
 
 mongoose.Promise = global.Promise;
 
-const dbUser = process.env.DEV_DB_USERNAME;
-const dbPassword = process.env.DEV_DB_PASSWORD;
-const dbUrl = `mongodb://${dbUser}:${dbPassword}@db:27017/dailytrends?authSource=admin`;
+const dbHost = db.host;
+const dbUser = db.user;
+const dbPassword = db.password;
+const dbDatabase = db.database;
+const dbUrl = `mongodb://${dbUser}:${dbPassword}@${dbHost}:27017/${dbDatabase}?authSource=admin`;
 
 mongoose
-  .connect(dbUrl, { useNewUrlParser: true })
+  .connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false })
   .then(() => {
     console.log('Successful database connection');
     getFeeds();

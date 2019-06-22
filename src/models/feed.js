@@ -1,5 +1,12 @@
+const FeedSchema = require('../db/feed');
+
 class FeedModel {
-  create(feed) {}
+  create(feed) {
+    let newFeed = FeedSchema(feed);
+    FeedSchema.find({ title: feed.title }).then(data => {
+      if (data.length === 0) newFeed.save();
+    });
+  }
 
   getAll() {}
 

@@ -18,6 +18,9 @@ $ make build
 $ make run
 ```
 
+## Testing
+If you want to run the test suite you can do it just by typing `make test`.
+
 ## License
 [GNU GPL v3](LICENSE.txt)
 

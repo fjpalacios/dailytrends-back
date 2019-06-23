@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const express = require('express');
 const port = process.env.APP_PORT || 3000;
+const cors = require('cors');
 const feedRoutes = require('./routes/feed');
 const mongoose = require('mongoose');
 const elPaisScraping = require('./helpers/elpais.scraping');
@@ -14,6 +15,7 @@ const app = express();
 
 app
   .set('port', port)
+  .use(cors({ origin: '*' }))
   .use(express.urlencoded({ extended: false }))
   .use(express.json())
   .use('/api/v1/feed', feedRoutes);

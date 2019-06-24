@@ -16,6 +16,12 @@ class FeedModel {
     return FeedSchema.findById(id);
   }
 
+  getLastFive() {
+    return FeedSchema.find()
+      .sort({ _id: -1 })
+      .limit(5);
+  }
+
   update(id, feed) {
     return FeedSchema.findByIdAndUpdate(id, feed);
   }

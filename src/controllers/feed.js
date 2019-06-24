@@ -47,6 +47,20 @@ class FeedController {
       });
   }
 
+  async getLastFive(req, res) {
+    await fm
+      .getLastFive()
+      .then(feeds => {
+        if (feeds.length === 0) {
+          return res.status(404).send({ message: 'No feeds found' });
+        }
+        return res.status(200).send({ feeds });
+      })
+      .catch(() => {
+        return res.status(500).send({ message: 'Request error' });
+      });
+  }
+
   async update(req, res) {
     const id = req.params.id;
     const feed = req.body.feed;

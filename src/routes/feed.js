@@ -6,6 +6,7 @@ const fc = new FeedController();
 router
   .post('/', fc.create)
   .get('/', fc.getAll)
+  .get('/latest', fc.getLastFive)
   .get('/:id', fc.getOne)
   .put('/:id', fc.update)
   .delete('/:id', fc.delete);

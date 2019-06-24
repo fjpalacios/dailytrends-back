@@ -2,6 +2,9 @@ const FeedSchema = require('../db/feed');
 
 class FeedModel {
   create(feed) {
+    if (feed.image === 'https://ep00.epimg.net/t.gif') {
+      feed.image = '';
+    }
     return new FeedSchema(feed).save();
   }
 

@@ -2,6 +2,7 @@ const environment = process.env.NODE_ENV || 'development';
 require('dotenv').config();
 
 const express = require('express');
+const morgan = require('morgan');
 const port = process.env.APP_PORT || 3000;
 const cors = require('cors');
 const feedRoutes = require('./routes/feed');
@@ -16,6 +17,7 @@ const app = express();
 app
   .set('port', port)
   .use(cors({ origin: '*' }))
+  .use(morgan('dev'))
   .use(express.urlencoded({ extended: false }))
   .use(express.json())
   .use('/api/v1/feed', feedRoutes);

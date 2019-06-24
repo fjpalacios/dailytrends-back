@@ -7,8 +7,11 @@ class FeedController {
     if (!feed) return res.status(500).send({ message: 'No feed data available' });
     await fm
       .create(feed)
-      .then(() => {
-        return res.status(200).send({ message: 'Feed successfully created' });
+      .then(data => {
+        return res.status(200).send({
+          message: 'Feed successfully created',
+          id: data.id,
+        });
       })
       .catch(() => {
         return res.status(500).send({ message: 'Request error' });
